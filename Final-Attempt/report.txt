@@ -1,0 +1,71 @@
+Forecasting System Documentation
+Author: Ibrahim Akhtar (i21-1679), Fasih Ur Rehman (i21-1705)
+
+
+Objective:
+
+This document details the development of a comprehensive forecasting system capable of:
+
+Implementing and comparing various time series models (ARIMA, ANN, Hybrid) across diverse sectors (Finance, Energy, Environment).
+Providing a user-friendly interface for data visualization and forecast exploration.
+Challenges Encountered:
+
+Data Acquisition: Obtaining high-quality, consistent data sources for all sectors proved more time-consuming than anticipated.
+Data Cleaning: Identifying and handling missing values in the energy consumption data required exploring domain-specific knowledge and data imputation techniques.
+Model Tuning: Determining the optimal hyperparameters for various models, particularly for the ANNs and LSTMs, involved an iterative process of experimentation and evaluation.
+Data Sources and Preprocessing:
+
+Finance: Monthly S&P 500 stock prices (source: [financial data provider website])
+Energy: Hourly energy consumption data (source: [energy data provider website]) - Challenge: Missing values required domain expertise for imputation.
+Environment: Daily atmospheric CO2 concentrations (source: [environmental data provider website])
+Preprocessing Steps:
+
+Cleaning: Missing values were addressed through imputation techniques (e.g., interpolation, mean/median filling) after careful consideration of data characteristics.
+Normalization/Standardization: Data was scaled to a common range (e.g., z-score normalization) to ensure consistent model training and evaluation.
+Stationarization: Differencing and logarithmic transformations were applied as needed to achieve stationarity for ARIMA and related models.
+Tools and Technologies:
+
+Backend: Python with Flask (API), Pandas, NumPy
+Frontend: ReactJS (user interface), HTML, CSS
+Data Science: Matplotlib, Seaborn, Statsmodels, TensorFlow/Keras
+Database: SQLite (data storage)
+Version Control: Git
+Model Development:
+
+ARIMA:
+Identified model parameters (p, d, q) using the ADF test and ACF/PACF plots.
+Challenge: Tuning parameters for the energy data with high frequency (hourly) proved more challenging, requiring additional research on seasonal ARIMA (SARIMA) models.
+ANN:
+Designed and trained neural networks with various architectures for each dataset.
+Challenge: Finding the optimal network architecture for the CO2 data with potentially complex relationships involved extensive experimentation and hyperparameter tuning.
+SARIMA:
+Implemented for datasets exhibiting seasonality (e.g., daily CO2 data).
+Determined seasonal parameters (P, D, Q) along with non-seasonal parameters.
+Exponential Smoothing (ETS):
+Implemented for datasets with trends and seasonality (e.g., energy data).
+Selected appropriate model type (simple, double, triple) based on data characteristics.
+Prophet:
+Utilized for daily environmental data (CO2) with strong seasonality and potential holidays.
+Tuned seasonality mode and added custom seasonality if needed.
+Support Vector Regression (SVR):
+Implemented for potentially non-linear relationships (e.g., finance data).
+Tuned kernel function and hyperparameters (C, gamma) using cross-validation.
+Long Short-Term Memory (LSTM):
+Designed LSTM networks for sequence prediction across all sectors.
+Tuned hyperparameters (number of layers, neurons, learning rate) for optimal performance.
+Hybrid Models Integration:
+Developed a hybrid model combining ARIMA and ANN for potentially improved accuracy.
+Used ARIMA forecasts as input features for the ANN to capture residual errors.
+Future Work:
+
+Integrate additional forecasting models (e.g., XGBoost) for broader comparison.
+Explore advanced visualization techniques for interactive forecast exploration.
+Deploy the system as a web application for wider accessibility.
+Conclusion:
+
+This forecasting system provides a versatile platform for time series analysis and prediction across diverse sectors. The combination of various models and a user-friendly interface empowers users to gain valuable insights from historical data and make informed decisions.
+
+
+
+As for the individual contribution, Both Fasih and I had so many issues that at some point we lost track of who was doing what.
+To summarzie, it was a painful project paired with sickness and laziness and some more difficulties along the way.
